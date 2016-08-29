@@ -1,0 +1,9 @@
+FROM ubuntu:16.04
+MAINTAINER jiacheng du "cleverdove4@163.com"
+ENV REFRESHED_AT 20160820
+RUN apt-get -y update && apt-get -y install vim
+
+RUN apt-get -y install nginx
+
+ADD awsome /etc/nginx/sites-available/
+

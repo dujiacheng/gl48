@@ -1,5 +1,5 @@
 import logging
-logging.basicConfig(level=logging.INFO)  # 必须紧跟其后
+logging.basicConfig(level=logging.INFO)  #
 import asyncio
 import json
 import os

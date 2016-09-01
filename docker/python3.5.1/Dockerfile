@@ -14,7 +14,7 @@ RUN exec $SHELL
 RUN apt-get -y build-dep python2.7
 
 RUN /root/.pyenv/bin/pyenv install 3.5.1
-RUN ln -sf /bin/bash /bin/sh
+#RUN ln -sf /bin/bash /bin/sh
 
 RUN /root/.pyenv/bin/pyenv global 3.5.1 
 
@@ -24,11 +24,17 @@ RUN /root/.pyenv/shims/pip install jinja2
 RUN /root/.pyenv/shims/pip install aiomysql 
 
 RUN apt-get install -y mysql-client
-
 RUN apt-get install -y libmysqlclient-dev
-
 ADD awesome /srv/awesome
-WORKDIR /srv/awesome/www
-CMD python app.py
 
-EXPOSE 9000
+RUN apt-get install -y nginx
+#ADD nginx/nginx.conf  /etc/nginx/nginx.conf
+ADD /static/awesome /etc/nginx/sites-available/
+WORKDIR /etc/nginx/sites-enabled
+RUN ln -s /etc/nginx/sites-available/awesome .
+RUN mkdir /srv/awesome/log/
+
+WORKDIR /srv/awesome/www
+
+
+EXPOSE 9000 8080

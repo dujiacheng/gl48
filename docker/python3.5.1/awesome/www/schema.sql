@@ -7,9 +7,6 @@ create database pure_blog;
 
 use pure_blog;
 
-select * from users;
-
-select name from users;
 
 grant select, insert, update, delete on pure_blog.* to 'kami'@'localhost' identified by 'kami';
 -- 给来自localhost的用户kami分配可对数据库pure_blog所有表进行所有操作的权限，并设定口令为kami
